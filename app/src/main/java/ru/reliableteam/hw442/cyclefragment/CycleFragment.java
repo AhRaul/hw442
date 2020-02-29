@@ -12,6 +12,7 @@ import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -45,6 +46,9 @@ public class CycleFragment extends Fragment implements View.OnClickListener {
             firstRunTextView.setText("Повторный запуск!");
         }
         makeMessage("onCreateView()");
+
+        Button buttonExit = (Button) v.findViewById(R.id.buttonExit);
+        buttonExit.setOnClickListener(this);
         return v;
     }
 
@@ -210,7 +214,7 @@ public class CycleFragment extends Fragment implements View.OnClickListener {
         switch (v.getId()) {
             case R.id.buttonExit:
                 makeMessage("summon finish");
-//                getActivity().finish();
+                getActivity().finish();
                 break;
             default:
                 break;
