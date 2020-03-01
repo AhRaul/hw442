@@ -7,6 +7,7 @@
     android:layout_height="match_parent"
     android:orientation="horizontal">
     <fragment
+        android:id="@+id/fragmentId"
         android:name="ru.reliableteam.hw442.cyclefragment.CycleFragment"
         android:layout_width="wrap_content"
         android:layout_height="match_parent"

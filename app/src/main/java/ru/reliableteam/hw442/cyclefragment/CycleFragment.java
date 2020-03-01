@@ -13,6 +13,7 @@ import android.view.MenuInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -26,33 +27,41 @@ public class CycleFragment extends Fragment implements View.OnClickListener {
 
     private String TAG = "[CycleFragment]";
     private TextView firstRunTextView;
+    private EditText editText;
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         makeMessage("onCreate()");
+
     }
 
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        setRetainInstance(true);
         View v = inflater.inflate(R.layout.fragment_cycle,container,false);
+
         firstRunTextView = (TextView) v.findViewById(R.id.textViewInfo);
+        editText = (EditText) v.findViewById(R.id.editText);
+        Button buttonExit = (Button) v.findViewById(R.id.buttonExit);
+
         if (savedInstanceState == null){
             firstRunTextView.setText("Первый запуск!");
-        }
-        else{
+        } else {
             firstRunTextView.setText("Повторный запуск!");
         }
+
         makeMessage("onCreateView()");
 
-        Button buttonExit = (Button) v.findViewById(R.id.buttonExit);
         buttonExit.setOnClickListener(this);
         return v;
     }
 
-
+    @Override
+    public void onSaveInstanceState(@NonNull Bundle outState) {
+        super.onSaveInstanceState(outState);
+        makeMessage("onSaveInstanceState()");
+    }
 
     @Override
     public void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
@@ -106,12 +115,6 @@ public class CycleFragment extends Fragment implements View.OnClickListener {
     public void onResume() {
         super.onResume();
         makeMessage("onResume()");
-    }
-
-    @Override
-    public void onSaveInstanceState(@NonNull Bundle outState) {
-        super.onSaveInstanceState(outState);
-        makeMessage("onSaveInstanceState()");
     }
 
     @Override
